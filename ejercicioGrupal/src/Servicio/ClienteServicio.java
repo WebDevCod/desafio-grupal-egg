@@ -42,16 +42,19 @@ public class ClienteServicio {
     }
 
     public void obtenerClientes() {
-        for (int i = 0; i < clientes.size(); i++) {
-            System.out.println(clientes.get(i).toString());
-        }
+//        for (int i = 0; i < clientes.size(); i++) {
+//            System.out.println(clientes.get(i).toString());
+//        }
+        System.out.println(clientes);
     }
 
     public void buscarCliente() {
         System.out.println("Ingresar nombre");
         String nombre_ingresado = leer.nextLine();
+        boolean bandera = false;
         for (int i = 0; i < clientes.size(); i++) {
             if (nombre_ingresado.equalsIgnoreCase(clientes.get(i).getNombre())) {
+                bandera = true;
                 System.out.println("Nombre nuevo");
                 String nombre = leer.nextLine();
                 System.out.println("Edad nueva");
@@ -67,9 +70,10 @@ public class ClienteServicio {
 
                 actualizarCliente(clientes.get(i).getId(), nombre, edad, altura, peso, objetivo);
             }
+        }
+        if (!bandera) {
             System.out.println("El usuario con ese nombre no aparece.");
         }
-
     }
 
     private void actualizarCliente(int id, String nombre, int edad, double altura, double peso, String objetivo) {
@@ -84,12 +88,17 @@ public class ClienteServicio {
     }
 
     public void eliminarCliente(int id) {
+        boolean bandera = false;
         for (int i = 0; i < clientes.size(); i++) {
             if (clientes.get(i).getId() == id) {
+                bandera = true;
                 clientes.remove(i);
-            } else {
-                System.out.println("Usuario no encontrado.");
+                System.out.println("Cliente eliminado");
             }
+        }
+        if (!bandera) {
+            System.out.println("Usuario no encontrado.");
+
         }
 
     }

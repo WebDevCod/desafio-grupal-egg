@@ -1,6 +1,8 @@
 package ejerciciogrupal;
 
+import Entidad.Rutina;
 import Servicio.ClienteServicio;
+import Servicio.RutinaServicio;
 import java.util.Scanner;
 
 public class EjercicioGrupal {
@@ -10,6 +12,8 @@ public class EjercicioGrupal {
         Scanner leer = new Scanner(System.in);
 
         ClienteServicio cs = new ClienteServicio();
+
+        RutinaServicio rs = new RutinaServicio();
 
         int opcion;
 
@@ -42,23 +46,26 @@ public class EjercicioGrupal {
                     System.out.println("Ingresa el nro de id del cliente a eliminar");
                     int id_ingresado = leer.nextInt();
                     cs.eliminarCliente(id_ingresado);
-
-//                break;
-//                case 1:
-//
-//                break;
-//                case 1:
-//
-//                break;
-//                case 1:
-//
-//                break;
-//                case 1:
-//
-//                break;
-//                case 1:
-//
-//                break;
+                    break;
+                case 5:
+                    Rutina r = new Rutina();
+                    rs.crearRutina(r);
+                    break;
+                case 6:
+                    rs.obtenerRutinas();
+                    break;
+                case 7:
+                    rs.buscarRutina();
+                    break;
+                case 8:
+                    rs.obtenerRutinas();
+                    System.out.println("Ingresa el nro de id de la rutina a eliminar");
+                    int id_r = leer.nextInt();
+                    rs.eliminarRutina(id_r);
+                    break;
+                case 9:
+                    System.out.println("Saliendo del programa...");
+                    break;
                 default:
                     System.out.println("Error al seleccionar item de lista");
             }
